@@ -38,5 +38,20 @@ end of the line, it will transpose the word before point with the first
 word on the next line.
 
    `C-M-t` (`transpose-sexps`) is a similar command for transposing two
-expressions (see Expressions in the docs), and `C-x C-t` (`transpose-lines`)
-e
+expressions (see Expressions in the docs), and `C-x C-t` (`transpose-lines`) exchanges lines.  They work like `M-t` except as regards the units of text they transpose.
+
+   A numeric argument to a transpose command serves as a repeat count:
+it tells the transpose command to move the character (or word or
+expression or line) before or containing point across several other
+characters (or words or expressions or lines).  For example, `C-u 3 C-t`
+moves the character before point forward across three other characters.
+It would change `f★oobar` into `oobf★ar`.  This is equivalent to
+repeating `C-t` three times.  `C-u - 4 M-t` moves the word before point
+backward across four words.  `C-u - C-M-t` would cancel the effect of
+plain `C-M-t`.
+
+   A numeric argument of zero is assigned a special meaning (because
+otherwise a command with a repeat count of zero would do nothing): to
+transpose the character (or word or expression or line) ending after
+point with the one ending after the mark.
+
